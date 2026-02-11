@@ -27,6 +27,9 @@ from pathlib import Path
 # Path to the dataset example "bird sound"
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
+# Base Path for audios
+base_path = Path(__file__).parent
+
 # -------------------------------   Menu Params   --------------------------- #        
         
 # Page Icon, side bar collpase
@@ -172,7 +175,8 @@ if selected == "BirdSong Example":
             for index, row in cluster_data.iterrows():
                 
                 st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                st.audio(Path(row['Audio']), format="audio/mpeg", loop=True)
+                audio_path = base_path / row["Audio"]
+                st.audio(audio_path, format="audio/mpeg", loop=True)
 
     else:
         st.warning("Please, make a selection.")
