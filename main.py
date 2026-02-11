@@ -144,7 +144,7 @@ if selected == "BirdSong Example":
             # Each Group -> Audios Samples 
             # Each Name & Species (& maybe a picture)
         
-        for cluster in df['Clusters'].unique():
+        for cluster in sorted(df['Clusters'].unique()):
             
             st.subheader(f"Cluster {cluster}")
             
