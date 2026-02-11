@@ -176,7 +176,10 @@ if selected == "BirdSong Example":
                 
                 st.markdown(f"**{row['Name']}** - *{row['Species']}*")
                 audio_path = base_path / row["Audio"]
-                st.audio(audio_path, format="audio/mpeg", loop=True)
+                st.write(audio_path)
+                st.write(audio_path.exists())
+                
+                #st.audio(audio_path, format="audio/mpeg", loop=True)
 
     else:
         st.warning("Please, make a selection.")
