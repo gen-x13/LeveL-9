@@ -34,8 +34,8 @@ base_path = Path(__file__).parent
         
 # Page Icon, side bar collpase
 st.set_page_config(page_title="Clustering Sound And More...", 
-                   initial_sidebar_state="collapsed",
-                   layout="wide")
+                   initial_sidebar_state="collapsed")
+                   #layout="wide")
 
 # Horizontal menu
 selected=option_menu(
