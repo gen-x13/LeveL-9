@@ -172,7 +172,7 @@ if selected == "BirdSong Example":
             for index, row in cluster_data.iterrows():
                 
                 st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                st.audio(row['Audio'], format="audio/mpeg", loop=True)
+                st.audio(Path(row['Audio']), format="audio/mpeg", loop=True)
 
     else:
         st.warning("Please, make a selection.")
