@@ -49,7 +49,7 @@ selected=option_menu(
 # -------------------------------   Bird's data   --------------------------- #
 
 # Security preventing any reading problem and any cache data problem
-@st.cache_data(show_spinner="Loading bird's sound data...")
+#@st.cache_data(show_spinner="Loading bird's sound data...")
 def load_data():
     return pd.read_csv(data_path)
 
