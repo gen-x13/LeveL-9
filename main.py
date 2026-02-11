@@ -36,7 +36,7 @@ data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
 # Alt Path since the Path in the dataset is wrong (make sure to create your dataset before using it)
 base_path = Path(__file__).parent
-samples_path = base_dir / "sample_audios_xeno_canto"
+samples_path = base_path / "sample_audios_xeno_canto"
 
 # -------------------------------   Menu Params   --------------------------- #        
         
