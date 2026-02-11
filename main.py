@@ -155,7 +155,7 @@ if selected == "BirdSong Example":
             cols = st.columns(3)
             
             # Using iterrows for EACH rows
-            for index, (_, row) in enumerate(cluster_data.iterrows()):
+            for index, (_, row) in range(len(cluster_data):
                 
                 col = cols[index % 3] # rotation 0,1,2
                 # Audio Path
