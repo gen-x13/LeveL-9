@@ -147,10 +147,7 @@ if selected == "BirdSong Example":
         for cluster in sorted(df['Clusters'].unique()):
             
             st.subheader(f"Cluster {cluster}")
-                
-            # Audio Path
-            audio_path = base_path / row["Audio"]
-                
+                   
             # Filtering audios from this cluster
             cluster_data = df[df['Clusters']== cluster]
             cluster_data = cluster_data.sort_values()
@@ -161,6 +158,8 @@ if selected == "BirdSong Example":
             for index, (_, row) in enumerate(cluster_data.iterrows()):
                 
                 col = cols[index % 3] # rotation 0,1,2
+                # Audio Path
+                audio_path = base_path / row["Audio"]
                 
                 with col:
                     st.markdown(f"**{row['Name']}** - *{row['Species']}*")
