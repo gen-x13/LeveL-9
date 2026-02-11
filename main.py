@@ -175,7 +175,7 @@ if selected == "BirdSong Example":
             for index, row in cluster_data.iterrows():
                 
                 st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                audio_path = row["Audio"]
+                audio_path = base_path / row["Audio"]
                 st.write(audio_path)
                 st.write(audio_path.exists())
                 
