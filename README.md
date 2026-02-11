@@ -9,7 +9,7 @@
   There is only version available:
   - 🇬🇧 **English version**: Includes English commentary (`-en`).
 
-- **🛠 Tech Stack:** Python, Pandas, Streamlit, Scikit-learn, Librosa.  
+- **🛠 Tech Stack:** Python, Pandas, Streamlit, Scikit-learn, Librosa, Requests.
 - **⏳ Time to complete:** 11 days.  
 
 ---
@@ -23,7 +23,7 @@
 This is my **fourteenth project**, and for a beginning, I'm proud of it! 🎉  
 - It took me **11 days** to build this entirely.
 
-It was a great learning experience, especially for **my problem-solving skills**, my comprehension of **Librosa, Clustering and Sound Analysis** on that exercise.
+It was a great learning experience, especially for **my problem-solving skills**, my comprehension of **Librosa, Requests, Data handling, Clustering and Sound Analysis** on that exercise.
 
 💡 My strengths: Determination, self-taught mindset, problem-solving and curiosity.
 
@@ -55,7 +55,7 @@ I’m planning a future remake with:
 ### **📦 Requirements**  
 Before running the project, make sure you have the following libraries installed:  
 ```bash
-pip install pandas streamlit plotly scikit-learn librosa pathlib plotly
+pip install pandas streamlit plotly scikit-learn librosa pathlib plotly requests
 
 ```
 ---
