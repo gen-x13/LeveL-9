@@ -47,34 +47,19 @@ selected=option_menu(
         orientation="horizontal"
 )   
 
-video_html = """
-		<style>
-
-		#myVideo {
-		  position: fixed!important;
-		  right: 0!important;
-		  bottom: 0!important;
-		  min-width: 100%!important; 
-		  min-height: 100%!important;
-		}
-
-		.content {
-		  position: fixed!important;
-		  bottom: 0!important;
-		  background: rgba(0, 0, 0, 0.5)!important;
-		  color: #f1f1f1!important;
-		  width: 100%!important;
-		  padding: 20px!important;
-		}
-
-		</style>	
-		<video autoplay muted loop id="myVideo">
-		  <source src="https://media.tenor.com/KzdfR6Hek7YAAAAM/forest-rain.gif">
-		  Your browser does not support HTML5 video.
-		</video>
-        """
-
-st.markdown(video_html, unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://media.tenor.com/KzdfR6Hek7YAAAAM/forest-rain.gif");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # -------------------------------   Bird's data   --------------------------- #
 
