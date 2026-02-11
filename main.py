@@ -20,7 +20,6 @@ import pandas as pd
 # Plotly for visualization
 import plotly.express as px
 
-
 # Streamlit for the web app
 import streamlit as st
 import streamlit.components.v1 as components
@@ -35,22 +34,9 @@ from pathlib import Path
 # Path to the dataset example "bird sound"
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
-# Interface :
-    
-    # Page Sound Bird : 
-        
-        # Sound in clustering
-        # Pictures
-        # Loading to show 
-        # Informations about the clusters (number of groups, species of birds
-        # etc)
-        
-    # Page Music User :
-        
-        # Max to 10 sounds from user 
-        # Slicing the 10 sounds between 8-4 secondes (user choice)
-        # Mashup with soundwave animation 
-        # 
+# Alt Path since the Path in the dataset is wrong (make sure to create your dataset before using it)
+base_path = Path(__file__).parent
+samples_path = base_dir / "sample_audios_xeno_canto"
 
 # -------------------------------   Menu Params   --------------------------- #        
         
@@ -112,7 +98,7 @@ if selected == "BirdSong Example":
     if num_cluster is not None:
         with st.spinner("Prediction in progress..."):
             df, pca_data = cluster_birdsong(data, num_cluster)
-            
+
             # Creating a dataframe from the components for plotly 3D
             # visualization
             df_plot = pd.DataFrame({
@@ -176,9 +162,17 @@ if selected == "BirdSong Example":
             # Using iterrows for EACH rows
             for index, row in cluster_data.iterrows():
                 
-                st.markdown(f"**{row['Name']}** - *{row['Species']}*")
+                #st.markdown(f"**{row['Name']}** - *{row['Species']}*")
+                #st.audio(row['Audio'], format="audio/mpeg", loop=True)
+
+                # Alternative Path 1
+                #audio_file = sample_path / Path(row['Audio']).name # only the file name
+                #st.audio(str(audio_file), format="audio/mpeg", loop=True)
+
+                # Alternative Path 2
+                # Little Path Modification for Github & Streamlit
+                df['Audio'] = df['Audio'].apply(lambda x: f"sample_audios_xeno_canto/{Path(x).name}")
                 st.audio(row['Audio'], format="audio/mpeg", loop=True)
-            
     else:
         st.warning("Please, make a selection.")
    
