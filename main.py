@@ -150,7 +150,7 @@ if selected == "BirdSong Example":
                    
             # Filtering audios from this cluster
             cluster_data = df[df['Clusters']== cluster]
-            cluster_data = cluster_data.sort_values()
+            cluster_data = cluster_data.sort_values(by="Name")
             
             cols = st.columns(3)
             
