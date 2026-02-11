@@ -51,20 +51,20 @@ video_html = """
 		<style>
 
 		#myVideo {
-		  position: fixed;
-		  right: 0;
-		  bottom: 0;
-		  min-width: 100%; 
-		  min-height: 100%;
+		  position: fixed!important;
+		  right: 0!important;
+		  bottom: 0!important;
+		  min-width: 100%!important; 
+		  min-height: 100%!important;
 		}
 
 		.content {
-		  position: fixed;
-		  bottom: 0;
-		  background: rgba(0, 0, 0, 0.5);
-		  color: #f1f1f1;
-		  width: 100%;
-		  padding: 20px;
+		  position: fixed!important;
+		  bottom: 0!important;
+		  background: rgba(0, 0, 0, 0.5)!important;
+		  color: #f1f1f1!important;
+		  width: 100%!important;
+		  padding: 20px!important;
 		}
 
 		</style>	
