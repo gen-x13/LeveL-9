@@ -27,10 +27,6 @@ from pathlib import Path
 # Path to the dataset example "bird sound"
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
-# Alt Path since the Path in the dataset is wrong (make sure to create your dataset before using it)
-#base_path = Path(__file__).parent
-#samples_path = base_path / "sample_audios_xeno_canto"
-
 # -------------------------------   Menu Params   --------------------------- #        
         
 # Page Icon, side bar collpase
@@ -55,7 +51,23 @@ def load_data():
     return pd.read_csv(data_path)
 
 data = load_data()
-data['Audio'] = data['Audio'].apply(lambda x: f"sample_audios_xeno_canto/{Path(x).name}")
+
+def extract_relative_path(full_path):
+    path = Path(full_path)
+    # Find "sample.." in the part of the strings in the path
+    parts = path.parts
+    try:
+        idx = parts.index("sample_audios_xeno_canto")
+        # Rebuild the path with the index
+        return str(Path(*parts[idx:]))
+    except ValueError:
+        # If not found, return the file's name
+        return f"sample_audios_xeno_canto/{path.name}"
+
+# Apply the transformation inside the dataset
+data['Audio'] = data['Audio'].apply(extract_relative_path)
+
+# Save the modifications in the csv data file
 data.to_csv(data_path, index=False)
 
 print(data['Audio'][0])
@@ -159,17 +171,9 @@ if selected == "BirdSong Example":
             # Using iterrows for EACH rows
             for index, row in cluster_data.iterrows():
                 
-                #st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                #st.audio(row['Audio'], format="audio/mpeg", loop=True)
-
-                # Alternative Path 1
-                #audio_file = sample_path / Path(row['Audio']).name # only the file name
-                #st.audio(str(audio_file), format="audio/mpeg", loop=True)
-
-                # Alternative Path 2
-                # Little Path Modification for Github & Streamlit
-                df['Audio'] = df['Audio'].apply(lambda x: f"sample_audios_xeno_canto/{Path(x).name}")
+                st.markdown(f"**{row['Name']}** - *{row['Species']}*")
                 st.audio(row['Audio'], format="audio/mpeg", loop=True)
+
     else:
         st.warning("Please, make a selection.")
    
