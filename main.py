@@ -158,6 +158,7 @@ if selected == "BirdSong Example":
                 audio_path = base_path / row["Audio"]
                 st.write(audio_path)
                 st.write(audio_path.exists())
+                st.write(list(Path(__file__).parent.glob("*")))
                 
                 #st.audio(audio_path, format="audio/mpeg", loop=True)
 
