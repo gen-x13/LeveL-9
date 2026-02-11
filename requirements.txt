@@ -1,0 +1,10 @@
+pandas 
+kaleido==0.2.1
+streamlit>=1.24
+altair>=5
+plotly
+scikit-learn
+streamlit-option-menu
+streamlit_extras
+librosa
+pathlib
