@@ -7,13 +7,6 @@ Created on Sat Jan 24 09:23:32 2026
 
 # FFT Unsupervised Learning Web App
 
-# First Page - Bruits d'oiseaux
-# Second Page - User test with its own audio
-# Maybe : ball bearing for a daily life example
-# Maybe : piano also for a musical example
-# Maybe : a mashup song who knosw
-# Maybe : Saturn's song / sound in real time (with maths)
-
 # Pandas for dataset handling
 import pandas as pd
 
@@ -35,8 +28,8 @@ from pathlib import Path
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
 # Alt Path since the Path in the dataset is wrong (make sure to create your dataset before using it)
-base_path = Path(__file__).parent
-samples_path = base_path / "sample_audios_xeno_canto"
+#base_path = Path(__file__).parent
+#samples_path = base_path / "sample_audios_xeno_canto"
 
 # -------------------------------   Menu Params   --------------------------- #        
         
@@ -62,6 +55,10 @@ def load_data():
     return pd.read_csv(data_path)
 
 data = load_data()
+data['Audio'] = data['Audio'].apply(lambda x: f"sample_audios_xeno_canto/{Path(x).name}")
+data.to_csv(data_path, index=False)
+
+print(data['Audio'][0])
 
 # ---------------------------------- Model ---------------------------------- #
 
