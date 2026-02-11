@@ -160,7 +160,7 @@ if selected == "BirdSong Example":
                 st.write(audio_path.exists())
                 st.write(list(Path(__file__).parent.glob("*")))
                 
-                #st.audio(audio_path, format="audio/mpeg", loop=True)
+                st.audio(audio_path, format="audio/mpeg", loop=True)
 
     else:
         st.warning("Please, make a selection.")
