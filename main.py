@@ -7,19 +7,11 @@ Created on Sat Jan 24 09:23:32 2026
 
 # FFT Unsupervised Learning Web App
 
-# First Page - Bruits d'oiseaux
-# Second Page - User test with its own audio
-# Maybe : ball bearing for a daily life example
-# Maybe : piano also for a musical example
-# Maybe : a mashup song who knosw
-# Maybe : Saturn's song / sound in real time (with maths)
-
 # Pandas for dataset handling
 import pandas as pd
 
 # Plotly for visualization
 import plotly.express as px
-
 
 # Streamlit for the web app
 import streamlit as st
@@ -35,22 +27,8 @@ from pathlib import Path
 # Path to the dataset example "bird sound"
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
-# Interface :
-    
-    # Page Sound Bird : 
-        
-        # Sound in clustering
-        # Pictures
-        # Loading to show 
-        # Informations about the clusters (number of groups, species of birds
-        # etc)
-        
-    # Page Music User :
-        
-        # Max to 10 sounds from user 
-        # Slicing the 10 sounds between 8-4 secondes (user choice)
-        # Mashup with soundwave animation 
-        # 
+# Base Path for audios
+base_path = Path(__file__).parent
 
 # -------------------------------   Menu Params   --------------------------- #        
         
@@ -112,7 +90,7 @@ if selected == "BirdSong Example":
     if num_cluster is not None:
         with st.spinner("Prediction in progress..."):
             df, pca_data = cluster_birdsong(data, num_cluster)
-            
+
             # Creating a dataframe from the components for plotly 3D
             # visualization
             df_plot = pd.DataFrame({
@@ -177,8 +155,13 @@ if selected == "BirdSong Example":
             for index, row in cluster_data.iterrows():
                 
                 st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                st.audio(row['Audio'], format="audio/mpeg", loop=True)
-            
+                audio_path = base_path / row["Audio"]
+                st.write(audio_path)
+                st.write(audio_path.exists())
+                st.write(list(Path(__file__).parent.glob("*")))
+                
+                #st.audio(audio_path, format="audio/mpeg", loop=True)
+
     else:
         st.warning("Please, make a selection.")
    
