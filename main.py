@@ -55,26 +55,6 @@ def load_data():
 
 data = load_data()
 
-def extract_relative_path(full_path):
-    path = Path(full_path)
-    # Find "sample.." in the part of the strings in the path
-    parts = path.parts
-    try:
-        idx = parts.index("sample_audios_xeno_canto")
-        # Rebuild the path with the index
-        return str(Path(*parts[idx:]))
-    except ValueError:
-        # If not found, return the file's name
-        return f"sample_audios_xeno_canto/{path.name}"
-
-# Apply the transformation inside the dataset
-data['Audio'] = data['Audio'].apply(extract_relative_path)
-
-# Save the modifications in the csv data file
-data.to_csv(data_path, index=False)
-
-print(data['Audio'][0])
-
 # ---------------------------------- Model ---------------------------------- #
 
 # For every object : st.cache_resource -> avoid problems with cache later
