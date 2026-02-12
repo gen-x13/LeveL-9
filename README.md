@@ -74,4 +74,4 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 *Each one of us has its own melody.*
 
 > ### Link to the bilingual blog talking about this project (french & english):
-> ### [Blog Tsunami Risk Project | Projet Risque de Tsunami Link](https://ko-fi.com/post/Tsunami-Risk-Project-Projet-Risque-de-Tsunami-W7W21SAPQQ)
+> ### [Blog Clustering BirdSongs Project | Clustering Chant d'oiseaux Projet Link](https://ko-fi.com/post/Clustering-BirdSongs-Project-Clustering-Chant-d-I3I61U135S)
