@@ -9,7 +9,7 @@ Created on Tue Feb  3 17:26:18 2026
 import numpy as np
 
 # Plotting results
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 # Creating the pipeline combining model and preprocessor
 from sklearn.pipeline import make_pipeline
