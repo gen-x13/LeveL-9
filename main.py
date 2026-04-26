@@ -7,6 +7,9 @@ Created on Sat Jan 24 09:23:32 2026
 
 # FFT Unsupervised Learning Web App
 
+# Randomizing the results
+import random
+
 # Pandas for dataset handling
 import pandas as pd
 
@@ -164,21 +167,17 @@ if selected == "BirdSong Example":
             st.subheader(f"Cluster {cluster}")
                    
             # Filtering audios from this cluster
-            cluster_data = df[df['Clusters']== cluster]
-            cluster_data = cluster_data.sort_values(by="Name")
-            
-            cols = st.columns(3)
-            
-            # Using iterrows for EACH rows
-            for index in range(len(cluster_data)):
-                row = cluster_data.iloc[index]
-                col = cols[index % 3] # rotation 0,1,2
-                # Audio Path
-                audio_path = base_path / row["Audio"]
-                
-                with col:
-                    st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                    st.audio(audio_path, format="audio/mpeg", loop=True)
+            cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
+        
+            # Randomizing the index
+            index = random.randrange(len(cluster_data))
+            # Take only one audio from the random index
+            row = cluster_data.iloc[index]
+            # Audio Path
+            audio_path = base_path / row["Audio"]
+            # Display name and audio
+            st.markdown(f"**{row['Name']}** - *{row['Species']}*")
+            st.audio(audio_path, format="audio/mpeg", loop=True)
 
     else:
         st.warning("Please, make a selection.")
