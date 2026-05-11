@@ -100,7 +100,7 @@ if selected == "BirdSong":
     st.title("Xeno Canto BirdSong Clustering")
     st.caption("⚠️ WIP ⚠️")
         
-    st.markdown("<b><p style='color:black;font-size:20px;'>This app groups birds based on their birdsong. Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
+    st.markdown("<b><p style='color:black;font-size:20px;background:rgba(255,255,255,0.45);'>This app groups birds based on their birdsong. Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
                 unsafe_allow_html=True)
 
     col1, col2 = st.columns([3, 1])
