@@ -95,7 +95,7 @@ if selected == "BirdSong Example":
     st.markdown("This app groups birds based on their birdsong (frequency, amplitude, similarity). Select how many clusters you want to observe within the ~400 audios from Xeno Canto.",
                 unsafe_allow_html=True)
     
-    num_cluster = st.slider("Number of clusters?", 3, 9, 3)
+    num_cluster = st.slider("Number of clusters?", 3, 10, 3)
     
     if num_cluster is not None:
         with st.spinner("Prediction in progress..."):
