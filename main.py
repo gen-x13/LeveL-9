@@ -65,6 +65,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# -------------------------------   Initialization   --------------------------- #
+if "show_cluster" not in st.session_state:
+    st.session_state.show_cluster = True
+if "show_dashboard" not in st.session_state:
+    st.session_state.show_dashbaord = False
+
 # -------------------------------   Bird's data   --------------------------- #
 
 # Security preventing any reading problem and any cache data problem
@@ -98,88 +104,92 @@ if selected == "BirdSong":
 
     col1, col2 = st.columns(2)
 
+    # Buttons from clustering to dashboard
     with col2:
-        if st.button("Clustering", width="stretch") :
-                with col1 :
-                    num_cluster = st.slider("Number of clusters?", 3, 10, 3)
-                
-                    if num_cluster is not None:
-                        with st.spinner("Prediction in progress..."):
-                            df, pca_data = cluster_birdsong(data, num_cluster)
-                
-                            # Creating a dataframe from the components for plotly 3D
-                            # visualization
-                            df_plot = pd.DataFrame({
-                                                    # Components (array)
-                                                    'PC1':pca_data[:,0],
-                                                    'PC2':pca_data[:,1],
-                                                    'PC3':pca_data[:,2],
-                                                    # Informations
-                                                    'Names':df['Name'],
-                                                    'Species':df['Species'],
-                                                    # Paths Audio Files 
-                                                    'Audios':df["Audio"],
-                                                    # Cluster Labels
-                                                    'Clusters':df['Clusters'],
-                
-                
-                                                    })
-                
-                        # 3D Scatter Plot of the results
-                        fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
-                                            color="Clusters", 
-                                            color_continuous_scale='Plasma',
-                                            hover_data=['Names', 'Species'],
-                                            title="BirdSongs 3D Clustering")
-                
-                        # Adjusting the size and opacity of the points
-                        fig.update_traces(
-                                marker=dict(
-                                        size=1.5, # 0.5 gives a space vibe, might use it elsewhere
-                                        opacity=0.8
-                                    )
-                            )
-                
-                        # Improving the view of the 3D Graph
-                        fig.update_layout(
-                                scene=dict(
-                                        xaxis_title='PC1',
-                                        yaxis_title='PC2',
-                                        zaxis_title='PC3'
-                                    ),
-                                width=500,
-                                height=500
-                            )
-                
-                        st.plotly_chart(fig)
-                
-                        # Subheader
-                        st.header("BirdSongs Groups")
-                
-                        for cluster in sorted(df['Clusters'].unique()):
-                
-                            st.subheader(f"Cluster {cluster}")
-                
-                            # Filtering audios from this cluster
-                            cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
-                
-                            # Randomizing the index
-                            index = random.randrange(len(cluster_data))
-                            # Take only one audio from the random index
-                            row = cluster_data.iloc[index]
-                            # Audio Path
-                            audio_path = base_path / row["Audio"]
-                            # Display name and audio
-                            st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-                            st.audio(audio_path, format="audio/mpeg", loop=True)
-                
-                    else:
-                        st.warning("Please, make a selection.")
-                            
+        if st.button("Clustering") :
+                st.session_state.show_cluster = True                            
         if st.button("Dashboard") :
-                with col1 :
-                        col1.write("It works")
-   
+                st.session_state.show_dashboard = True
+              
+    with col1:
+        if st.session_state.show_cluster :
+                num_cluster = st.slider("Number of clusters?", 3, 10, 3)
+                if num_cluster is not None:
+                    with st.spinner("Prediction in progress..."):
+                        df, pca_data = cluster_birdsong(data, num_cluster)
+                
+                        # Creating a dataframe from the components for plotly 3D
+                        # visualization
+                        df_plot = pd.DataFrame({
+                                                # Components (array)
+                                                'PC1':pca_data[:,0],
+                                                'PC2':pca_data[:,1],
+                                                'PC3':pca_data[:,2],
+                                                # Informations
+                                                'Names':df['Name'],
+                                                'Species':df['Species'],
+                                                # Paths Audio Files 
+                                                'Audios':df["Audio"],
+                                                # Cluster Labels
+                                                'Clusters':df['Clusters'],
+                
+                
+                                                })
+                
+                    # 3D Scatter Plot of the results
+                    fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
+                                        color="Clusters", 
+                                        color_continuous_scale='Plasma',
+                                        hover_data=['Names', 'Species'],
+                                        title="BirdSongs 3D Clustering")
+                
+                    # Adjusting the size and opacity of the points
+                    fig.update_traces(
+                            marker=dict(
+                                    size=1.5, # 0.5 gives a space vibe, might use it elsewhere
+                                    opacity=0.8
+                                )
+                        )
+                
+                    # Improving the view of the 3D Graph
+                    fig.update_layout(
+                            scene=dict(
+                                    xaxis_title='PC1',
+                                    yaxis_title='PC2',
+                                    zaxis_title='PC3'
+                                ),
+                            width=500,
+                            height=500
+                        )
+                
+                    st.plotly_chart(fig)
+                
+                    # Subheader
+                    st.header("BirdSongs Groups")
+                
+                    for cluster in sorted(df['Clusters'].unique()):
+                
+                        st.subheader(f"Cluster {cluster}")
+                
+                        # Filtering audios from this cluster
+                        cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
+                
+                        # Randomizing the index
+                        index = random.randrange(len(cluster_data))
+                        # Take only one audio from the random index
+                        row = cluster_data.iloc[index]
+                        # Audio Path
+                        audio_path = base_path / row["Audio"]
+                        # Display name and audio
+                        st.markdown(f"**{row['Name']}** - *{row['Species']}*")
+                        st.audio(audio_path, format="audio/mpeg", loop=True)
+                
+                else:
+                    st.warning("Please, make a selection.") 
+
+        elif st.session_state.show_dashboard :
+                col1.write("It works")
+                
 # --------------------------------  Music Page  ----------------------------- #
 
 elif selected == "Music":
