@@ -85,7 +85,6 @@ data = load_data()
 # For every object : st.cache_resource -> avoid problems with cache later
 
 # BirdSong Clustering Model
-#@st.cache_data # only cache for objects
 def cluster_birdsong(data, clusters):
     birdsong = BirdModel(data, clusters)
     return birdsong.run()
@@ -94,7 +93,7 @@ def cluster_birdsong(data, clusters):
 # --------------------------------- BirdSong -------------------------------- #
 
 
-# BirdSong Model Page Selection :nnnnnn
+# BirdSong Model Page Selection :  
 
 if selected == "BirdSong": 
     
@@ -168,7 +167,7 @@ if selected == "BirdSong":
                     st.plotly_chart(fig)
                 
                     # Subheader
-                    st.header("BirdSongs Groups")
+                    st.header("BirdSongs Groups Samples")
                 
                     for cluster in sorted(df['Clusters'].unique()):
                 
