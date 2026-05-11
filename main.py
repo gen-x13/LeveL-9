@@ -102,7 +102,7 @@ if selected == "BirdSong":
     st.markdown("<b><p style='color:black;font-size:20px;'>This app groups birds based on their birdsong. Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
                 unsafe_allow_html=True)
 
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([3, 1])
 
     # Buttons from clustering to dashboard
     with col2:
