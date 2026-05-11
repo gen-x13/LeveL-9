@@ -90,7 +90,7 @@ def cluster_birdsong(data, clusters):
 # BirdSong Model Example Page Selection :
 if selected == "BirdSong Example": 
     
-    st.title("Xeno Canto BirdSong Clustering)
+    st.title("Xeno Canto BirdSong Clustering")
         
     st.markdown("This app groups birds based on their birdsong (frequency, amplitude, similarity). Select how many clusters you want to observe within the ~400 audios from Xeno Canto.",
                 unsafe_allow_html=True)
