@@ -97,7 +97,7 @@ if selected == "BirdSong Example":
                 unsafe_allow_html=True)
     
     num_cluster = st.slider("Number of clusters?", 3, 10, 3)
-    
+
     if num_cluster is not None:
         with st.spinner("Prediction in progress..."):
             df, pca_data = cluster_birdsong(data, num_cluster)
@@ -116,17 +116,17 @@ if selected == "BirdSong Example":
                                     'Audios':df["Audio"],
                                     # Cluster Labels
                                     'Clusters':df['Clusters'],
-                                    
-                                    
+
+
                                     })
-        
+
         # 3D Scatter Plot of the results
         fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
                             color="Clusters", 
                             color_continuous_scale='Plasma',
                             hover_data=['Names', 'Species'],
                             title="BirdSongs 3D Clustering")
-        
+
         # Adjusting the size and opacity of the points
         fig.update_traces(
                 marker=dict(
@@ -134,7 +134,7 @@ if selected == "BirdSong Example":
                         opacity=0.8
                     )
             )
-        
+
         # Improving the view of the 3D Graph
         fig.update_layout(
                 scene=dict(
@@ -145,19 +145,19 @@ if selected == "BirdSong Example":
                 width=500,
                 height=500
             )
-        
+
         st.plotly_chart(fig)
-            
+
         # Subheader
         st.header("BirdSongs Groups")
-        
+
         for cluster in sorted(df['Clusters'].unique()):
-            
+
             st.subheader(f"Cluster {cluster}")
-                   
+
             # Filtering audios from this cluster
             cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
-        
+
             # Randomizing the index
             index = random.randrange(len(cluster_data))
             # Take only one audio from the random index
