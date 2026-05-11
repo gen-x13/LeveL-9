@@ -120,56 +120,56 @@ if selected == "BirdSong Example":
 
                                     })
 
-        # 3D Scatter Plot of the results
-        fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
-                            color="Clusters", 
-                            color_continuous_scale='Plasma',
-                            hover_data=['Names', 'Species'],
-                            title="BirdSongs 3D Clustering")
-
-        # Adjusting the size and opacity of the points
-        fig.update_traces(
-                marker=dict(
-                        size=1.5, # 0.5 gives a space vibe, might use it elsewhere
-                        opacity=0.8
+                # 3D Scatter Plot of the results
+                fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
+                                    color="Clusters", 
+                                    color_continuous_scale='Plasma',
+                                    hover_data=['Names', 'Species'],
+                                    title="BirdSongs 3D Clustering")
+        
+                # Adjusting the size and opacity of the points
+                fig.update_traces(
+                        marker=dict(
+                                size=1.5, # 0.5 gives a space vibe, might use it elsewhere
+                                opacity=0.8
+                            )
                     )
-            )
-
-        # Improving the view of the 3D Graph
-        fig.update_layout(
-                scene=dict(
-                        xaxis_title='PC1',
-                        yaxis_title='PC2',
-                        zaxis_title='PC3'
-                    ),
-                width=500,
-                height=500
-            )
-
-        st.plotly_chart(fig)
-
-        # Subheader
-        st.header("BirdSongs Groups")
-
-        for cluster in sorted(df['Clusters'].unique()):
-
-            st.subheader(f"Cluster {cluster}")
-
-            # Filtering audios from this cluster
-            cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
-
-            # Randomizing the index
-            index = random.randrange(len(cluster_data))
-            # Take only one audio from the random index
-            row = cluster_data.iloc[index]
-            # Audio Path
-            audio_path = base_path / row["Audio"]
-            # Display name and audio
-            st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-            st.audio(audio_path, format="audio/mpeg", loop=True)
-
-    else:
-        st.warning("Please, make a selection.")
+        
+                # Improving the view of the 3D Graph
+                fig.update_layout(
+                        scene=dict(
+                                xaxis_title='PC1',
+                                yaxis_title='PC2',
+                                zaxis_title='PC3'
+                            ),
+                        width=500,
+                        height=500
+                    )
+        
+                st.plotly_chart(fig)
+        
+                # Subheader
+                st.header("BirdSongs Groups")
+        
+                for cluster in sorted(df['Clusters'].unique()):
+        
+                    st.subheader(f"Cluster {cluster}")
+        
+                    # Filtering audios from this cluster
+                    cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
+        
+                    # Randomizing the index
+                    index = random.randrange(len(cluster_data))
+                    # Take only one audio from the random index
+                    row = cluster_data.iloc[index]
+                    # Audio Path
+                    audio_path = base_path / row["Audio"]
+                    # Display name and audio
+                    st.markdown(f"**{row['Name']}** - *{row['Species']}*")
+                    st.audio(audio_path, format="audio/mpeg", loop=True)
+        
+            else:
+                st.warning("Please, make a selection.")
         
    
 # --------------------------------  Music Page  ----------------------------- #
