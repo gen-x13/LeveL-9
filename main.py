@@ -92,7 +92,7 @@ if selected == "BirdSong Example":
     
     st.title("Xeno Canto BirdSong Clustering")
         
-    st.markdown("<b><p style='color:black;font-size:20px;'>This app groups birds based on their birdsong.</p></b> <b><p style='color:black;font-size:20px;'>Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
+    st.markdown("<b><p style='color:black;font-size:20px;'>This app groups birds based on their birdsong. Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
                 unsafe_allow_html=True)
     
     num_cluster = st.slider("Number of clusters?", 3, 10, 3)
