@@ -90,20 +90,12 @@ def cluster_birdsong(data, clusters):
 # BirdSong Model Example Page Selection :
 if selected == "BirdSong Example": 
     
-    st.title("BirdSong Clustering Example")
-    
-    # Explication de clustering
-    # Explication de l'utilisation de l'app
-    # Possibilité de choisir entre 3 à 9 clusters 
-    # Audio intégré après chaque prédiction (par groupe)
-    
-    st.header("What is clustering ?")
-    # HTML Writing to reduce the space between two lines
-    st.markdown("Clustering is one of the few ML methods of prediciton.<br>It consists of grouping data points based on the nearest point.<br>This is an example of clustering with BirdSongs.<br>You can choose how many clusters you want with the ~400 birdsongs.",
+    st.title("Xeno Canto BirdSong Clustering)
+        
+    st.markdown("This app groups birds based on their birdsong (frequency, amplitude, similarity). Select how many clusters you want to observe within the ~400 audios from Xeno Canto.",
                 unsafe_allow_html=True)
     
-    num_cluster = st.selectbox( "Number of clusters ?", options= range(3, 10),
-                            index=0)
+    num_cluster = st.slider("Number of clusters?", 3, 9, 3)
     
     if num_cluster is not None:
         with st.spinner("Prediction in progress..."):
