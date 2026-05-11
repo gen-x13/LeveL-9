@@ -44,7 +44,7 @@ st.set_page_config(page_title="Clustering Sound And More...",
 # Horizontal menu
 selected=option_menu(
         menu_title="Menu",
-        options = ["BirdSong Example", "Music"], 
+        options = ["BirdSong", "Music"], 
         icons = ["music-note-list", "soundwave"],
         menu_icon="cast",
         default_index=0,
@@ -151,29 +151,42 @@ if selected == "BirdSong Example":
         # Subheader
         st.header("BirdSongs Groups")
         
-            # Each Group -> Labeled Group cluster_uni.count()[0] etc
-            # Each Group -> Audios Samples 
-            # Each Name & Species (& maybe a picture)
-        
-        for cluster in sorted(df['Clusters'].unique()):
-            
-            st.subheader(f"Cluster {cluster}")
-                   
-            # Filtering audios from this cluster
-            cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
-        
-            # Randomizing the index
-            index = random.randrange(len(cluster_data))
-            # Take only one audio from the random index
-            row = cluster_data.iloc[index]
-            # Audio Path
-            audio_path = base_path / row["Audio"]
-            # Display name and audio
-            st.markdown(f"**{row['Name']}** - *{row['Species']}*")
-            st.audio(audio_path, format="audio/mpeg", loop=True)
+        col1, col2 = st.columns(2)
 
-    else:
-        st.warning("Please, make a selection.")
+        with col2:
+                if st.button("Clustering", width="stretch") :
+                        with col1 :
+                                container = st.container(border=True)
+                                # Subheader
+                                container.header("BirdSongs Groups")
+                                
+                                    # Each Group -> Labeled Group cluster_uni.count()[0] etc
+                                    # Each Group -> Audios Samples 
+                                    # Each Name & Species (& maybe a picture)
+                                
+                                for cluster in sorted(df['Clusters'].unique()):
+                                    
+                                    container.subheader(f"Cluster {cluster}")
+                                           
+                                    # Filtering audios from this cluster
+                                    cluster_data = df[df['Clusters']== cluster].sort_values(by="Name")
+                                
+                                    # Randomizing the index
+                                    index = random.randrange(len(cluster_data))
+                                    # Take only one audio from the random index
+                                    row = cluster_data.iloc[index]
+                                    # Audio Path
+                                    audio_path = base_path / row["Audio"]
+                                    # Display name and audio
+                                    container.markdown(f"**{row['Name']}** - *{row['Species']}*")
+                                    container.audio(audio_path, format="audio/mpeg", loop=True)
+                        
+                            else:
+                                container.warning("Please, make a selection.")
+                                    
+                if st.button("Dashboard") :
+                        with col1 :
+                                col1.write("It works")
    
 # --------------------------------  Music Page  ----------------------------- #
 
