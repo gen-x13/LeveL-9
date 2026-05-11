@@ -160,10 +160,6 @@ if selected == "BirdSong Example":
                                 # Subheader
                                 container.header("BirdSongs Groups")
                                 
-                                    # Each Group -> Labeled Group cluster_uni.count()[0] etc
-                                    # Each Group -> Audios Samples 
-                                    # Each Name & Species (& maybe a picture)
-                                
                                 for cluster in sorted(df['Clusters'].unique()):
                                     
                                     container.subheader(f"Cluster {cluster}")
@@ -181,8 +177,6 @@ if selected == "BirdSong Example":
                                     container.markdown(f"**{row['Name']}** - *{row['Species']}*")
                                     container.audio(audio_path, format="audio/mpeg", loop=True)
                         
-                            else:
-                                container.warning("Please, make a selection.")
                                     
                 if st.button("Dashboard") :
                         with col1 :
