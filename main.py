@@ -107,9 +107,11 @@ if selected == "BirdSong":
     # Buttons from clustering to dashboard
     with col2:
         if st.button("Clustering") :
-                st.session_state.show_cluster = True                            
+                st.session_state.show_cluster = True
+                st.session_state.show_dashboard = False
         if st.button("Dashboard") :
                 st.session_state.show_dashboard = True
+                st.session_state.show_cluster = False
               
     with col1:
         if st.session_state.show_cluster :
@@ -187,7 +189,7 @@ if selected == "BirdSong":
                 else:
                     st.warning("Please, make a selection.") 
 
-        elif st.session_state.show_dashboard :
+        elif st.session_state.show_dashboard and not st.session_state.show_cluster :
                 col1.write("It works")
                 
 # --------------------------------  Music Page  ----------------------------- #
