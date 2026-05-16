@@ -1,8 +1,8 @@
-## Level 9 🏠
+## Level 9
 
-### **🏆 Project : BirdSong Clustering Prediction**
+### **Project : BirdSong Clustering Prediction**
 
-- **📌 Description:**  
+- **Description:**  
   This project displays how clustering works with samples of birdsongs audios.
   There's also the "bird_sound.py" file, which show how I made these short samples.
   
@@ -10,24 +10,12 @@
   - 🇬🇧 **English version**: Includes English commentary (`-en`).
 
 - **🛠 Tech Stack:** Python, Pandas, Streamlit, Scikit-learn, Librosa, Requests.
-- **⏳ Time to complete:** 11 days.  
+- **Time to complete:** 11 days.  
 
 ---
 
 ⚠️ Reminder: This is a beginner-level project : a test, an exploration, a digital sketchbook.         
 ⚠️ Note: This app might take a few seconds to load if it's been inactive — please be patient while it wakes up!
-
----
-
-### **💭 My thoughts on this project:**  
-This is my **fourteenth project**, and for a beginning, I'm proud of it! 🎉  
-- It took me **11 days** to build this entirely.
-
-It was a great learning experience, especially for **my problem-solving skills**, my comprehension of **Librosa, Requests, Data handling, Clustering and Sound Analysis** on that exercise.
-
-💡 My strengths: Determination, self-taught mindset, problem-solving and curiosity.
-
-🚀 Areas for improvement: Code syntax.
 
 ---
 
