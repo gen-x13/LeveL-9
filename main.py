@@ -207,10 +207,10 @@ if selected == "BirdSong":
                         subcol1, subcol2 = st.columns(2)
         
                         with subcol1:
-                                print("Hey")
+                                st.markdown("Hey")
 
                         with subcol2:
-                                print("Hey")
+                                st.markdown("Hey")
 
                 else:
                         st.warning("Select a bird")
