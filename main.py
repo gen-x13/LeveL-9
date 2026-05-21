@@ -134,7 +134,7 @@ def get_bird_image(species_name):
 
 if selected == "BirdSong": 
     
-    st.title("Xeno Canto BirdSong Clustering")
+    st.title("Xeno Canto Wildlife Song Clustering")
     st.caption("⚠️ WIP ⚠️")
         
     st.markdown("<b><p style='color:black;font-size:20px;background:rgba(255,255,255,0.20);border-radius:12px;padding:10px 14px;display:inline;backdrop-filter:blur(6px);'>This app groups birds based on their birdsong. Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
@@ -229,12 +229,12 @@ if selected == "BirdSong":
                 # Sorting Values
                 df = df.sort_values(by="Name", ascending=True)
                 # Creating a new column combining name and species
-                df["bird-specie"] = df["Name"] + " - " + df["Species"]
+                df["animal-specie"] = df["Name"] + " - " + df["Species"]
 
                 # Selection of birds
                 spe_bird_sel = st.selectbox(
-                    "Select a bird",
-                    df['bird-specie'],
+                    "Select a animal",
+                    df['animal-specie'],
                     index=None,
                     placeholder="Select a bird.",
                     accept_new_options=True,
@@ -254,7 +254,7 @@ if selected == "BirdSong":
                                 # Same specie different cluster or picture of the bird or galerie for the specie
                                 import requests
 
-                                selected_row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
+                                selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
                                 bird_name = selected_row["Name"]
                                 
                                 # Display
@@ -263,7 +263,7 @@ if selected == "BirdSong":
                                 if image_url:
                                         st.image(image_url, width=300)
                                         # Take only one audio from the random index
-                                        row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
+                                        row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
                                         # Audio Path
                                         audio_path = base_path / row["Audio"]
                                         # Display name and audio
@@ -275,7 +275,7 @@ if selected == "BirdSong":
 
 
                 else:
-                        st.warning("Select a bird")
+                        st.warning("Select an animal")
 
 
 
