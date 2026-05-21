@@ -262,6 +262,13 @@ if selected == "BirdSong":
                                 
                                 if image_url:
                                         st.image(image_url, width=300)
+                                        # Take only one audio from the random index
+                                        row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
+                                        # Audio Path
+                                        audio_path = base_path / row["Audio"]
+                                        # Display name and audio
+                                        st.markdown(f"**{row['Name']}** - *{row['Species']}*")
+                                        st.audio(audio_path, format="audio/mpeg", loop=True)
                                 
                                 else:
                                         st.write("Image non trouvée")
