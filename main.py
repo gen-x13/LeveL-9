@@ -213,10 +213,13 @@ if selected == "BirdSong":
                         subcol1, subcol2 = st.columns(2)
         
                         with subcol1:
-                                st.markdown("Hey")
+                                st.caption("🏗 It's still under construction, come back in a few days")
+                                # 5 samples with strong similarities (points proches)
+                                
 
                         with subcol2:
-                                st.markdown("Hey")
+                                st.caption("🏗 It's still under construction, come back in a few days")
+                                # Same specie different cluster or picture of the bird or galerie for the specie
 
                 else:
                         st.warning("Select a bird")
