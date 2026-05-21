@@ -196,7 +196,7 @@ if selected == "BirdSong":
                 st.write("It works")
                 spe_bird_sel = st.selectbox(
                     "Select a bird",
-                    df['Name'], #df['Species'],,
+                    df['Name'].sort_values(by="Name", ascending=True), #df['Species'],,
                     index=None,
                     placeholder="Select a bird.",
                     accept_new_options=True,
