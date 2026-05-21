@@ -212,6 +212,9 @@ if selected == "BirdSong":
                         with subcol2:
                                 print("Hey")
 
+                else:
+                        st.warning("Select a bird")
+
 
 
 
