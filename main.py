@@ -89,7 +89,7 @@ def cluster_birdsong(data, clusters):
     birdsong = BirdModel(data, clusters)
     return birdsong.run()
 
-def display_prediction():
+def display_prediction(data, num_cluster):
 
         df, pca_data = cluster_birdsong(data, num_cluster)
         return df, pca_data
@@ -124,7 +124,7 @@ if selected == "BirdSong":
                 num_cluster = st.slider("Number of clusters?", 3, 10, 3)
                 if num_cluster is not None:
                     with st.spinner("Prediction in progress..."):
-                        df, pca_data = display_prediction()
+                        df, pca_data = display_prediction(data, num_cluster)
                         # Creating a dataframe from the components for plotly 3D
                         # visualization
                         df_plot = pd.DataFrame({
@@ -192,7 +192,7 @@ if selected == "BirdSong":
                     st.warning("Please, make a selection.") 
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
-                df, pca_data = display_prediction()
+                df, pca_data = display_prediction(data, 4)
                 st.write("It works")
                 spe_bird_sel = st.selectbox(
                     "Select a bird",
