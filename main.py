@@ -104,26 +104,30 @@ def get_bird_image(name):
     for lang in languages:
 
         # Encodage URL propre
-        encoded_name = quote(name)
+        url = "https://api.inaturalist.org/v1/taxa"
 
-        url = f"https://{lang}.wikipedia.org/api/rest_v1/page/summary/{encoded_name}"
-
+        params = {
+                "q": species_name,
+                "limit": 1
+            }
+        
         try:
-            response = requests.get(url)
-
-            if response.status_code == 200:
-
+                response = requests.get(url, params=params)
                 data = response.json()
-
-                image_url = data.get("thumbnail", {}).get("source")
-
-                if image_url:
-                    return image_url
-
-        except Exception:
-            pass
-
-    return None
+        
+                results = data.get("results")
+        
+                if results:
+        
+                    photo = results[0].get("default_photo")
+        
+                    if photo:
+                        return photo.get("medium_url")
+        
+            except Exception:
+                pass
+        
+            return None
 
 
 # --------------------------------- BirdSong -------------------------------- #
