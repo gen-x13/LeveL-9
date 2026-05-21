@@ -191,8 +191,13 @@ if selected == "BirdSong":
                     st.warning("Please, make a selection.") 
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
-                col1.write("It works")
+                st.write("It works")
                 
+    
+
+
+
+
 # --------------------------------  Music Page  ----------------------------- #
 
 elif selected == "Music":
@@ -200,3 +205,30 @@ elif selected == "Music":
     st.title("Music Mashup Clusters")
     
     st.caption("🏗 It's still under construction, come back in a few days")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
