@@ -124,10 +124,10 @@ def get_bird_image(name):
                     if photo:
                         return photo.get("medium_url")
         
-            except Exception:
+        except Exception:
                 pass
         
-            return None
+        return None
 
 
 # --------------------------------- BirdSong -------------------------------- #
