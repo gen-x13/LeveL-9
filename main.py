@@ -192,8 +192,23 @@ if selected == "BirdSong":
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
                 st.write("It works")
-                
-    
+                spe_bird_sel = st.selectbox(
+                    "Select a bird",
+                    df['Name'], #df['Species'],,
+                    index=None,
+                    placeholder="Select a bird.",
+                    accept_new_options=True,
+                )
+
+                if spe_bird_sel is not None:
+
+                        subcol1, subcol2 = st.columns([3, 1])
+        
+                        with subcol1:
+                                print("Hey")
+
+                        with subcol2:
+                                print("Hey")
 
 
 
