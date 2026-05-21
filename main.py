@@ -220,6 +220,41 @@ if selected == "BirdSong":
                         with subcol2:
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # Same specie different cluster or picture of the bird or galerie for the specie
+                                import streamlit as st
+                                import pandas as pd
+                                import requests
+                                
+                                # Exemple dataframe
+                                df2 = pd.DataFrame({
+                                    "Name": ["Sparrowhawk", "Eagle"],
+                                    "Species": ["Eurasian Sparrowhawk", "Golden Eagle"]
+                                })
+                                
+                                # Fonction pour récupérer image Wikipedia
+                                def get_bird_image(name):
+                                    url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{name}"
+                                
+                                    try:
+                                        response = requests.get(url)
+                                        data = response.json()
+                                
+                                        return data.get("thumbnail", {}).get("source")
+                                
+                                    except:
+                                        return None
+                                
+                                # Affichage
+                                for _, row in df2.iterrows():
+                                
+                                    image_url = get_bird_image(row["Species"])
+                                
+                                    st.subheader(row["Name"])
+                                
+                                    if image_url:
+                                        st.image(image_url, width=300)
+                                
+                                    else:
+                                        st.write("Image non trouvée")
 
                 else:
                         st.warning("Select a bird")
