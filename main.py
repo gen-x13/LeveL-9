@@ -224,12 +224,6 @@ if selected == "BirdSong":
                                 import pandas as pd
                                 import requests
                                 
-                                # Exemple dataframe
-                                df2 = pd.DataFrame({
-                                    "Name": ["Sparrowhawk", "Eagle"],
-                                    "Species": ["Eurasian Sparrowhawk", "Golden Eagle"]
-                                })
-                                
                                 # Fonction pour récupérer image Wikipedia
                                 def get_bird_image(name):
                                     url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{name}"
@@ -246,7 +240,7 @@ if selected == "BirdSong":
                                 # Affichage
                                 for _, row in df2.iterrows():
                                 
-                                    image_url = get_bird_image(row["Species"])
+                                    image_url = get_bird_image(spe_bird_sel)
                                 
                                     st.subheader(row["Name"])
                                 
