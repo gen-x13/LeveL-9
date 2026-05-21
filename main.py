@@ -97,7 +97,7 @@ def display_prediction(data, num_cluster):
         return df, pca_data
 
 @st.cache_data
-def get_species_image(species_name):
+def get_bird_image(species_name):
 
     url = "https://api.inaturalist.org/v1/taxa"
 
