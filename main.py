@@ -220,9 +220,11 @@ if selected == "BirdSong":
                         with subcol2:
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # Same specie different cluster or picture of the bird or galerie for the specie
-                                import streamlit as st
-                                import pandas as pd
                                 import requests
+
+                                selected_row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
+                                bird_name = selected_row["Species"]
+
                                 
                                 # Fonction pour récupérer image Wikipedia
                                 def get_bird_image(name):
@@ -238,15 +240,14 @@ if selected == "BirdSong":
                                         return None
                                 
                                 # Affichage
-                                image_url = get_bird_image(df[spe_bird_sel]["Name"])
+                                image_url = get_bird_image(bird_name)
                                 
                                 if image_url:
                                         st.image(image_url, width=300)
                                 
                                 else:
                                         st.write("Image non trouvée")
-                                
-                                    
+
 
                 else:
                         st.warning("Select a bird")
