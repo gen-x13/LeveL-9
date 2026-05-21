@@ -192,10 +192,14 @@ if selected == "BirdSong":
                     st.warning("Please, make a selection.") 
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
+                # Storing Data
                 df, pca_data = display_prediction(data, 4)
+                # Sorting Values
                 df = df.sort_values(by="Name", ascending=True)
+                # Creating a new column combining name and species
                 df["bird-specie"] = df["Name"] + " - " + df["Species"]
-                st.write("It works")
+
+                # Selection of birds
                 spe_bird_sel = st.selectbox(
                     "Select a bird",
                     df['bird-specie'],
@@ -204,7 +208,6 @@ if selected == "BirdSong":
                     accept_new_options=True,
                 )
                 #with st.spinner("Prediction in progress..."):
-                # écrire les noms + specie : {df['Name']} - {df['Species']}
                 if spe_bird_sel is not None:
 
                         subcol1, subcol2 = st.columns(2)
