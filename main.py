@@ -194,15 +194,17 @@ if selected == "BirdSong":
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
                 df, pca_data = display_prediction(data, 4)
                 df = df.sort_values(by="Name", ascending=True)
+                df["bird-specie"] = df["Name"] + " - " + df["Species"]
                 st.write("It works")
                 spe_bird_sel = st.selectbox(
                     "Select a bird",
-                    df['Name'], #df['Species'],,
+                    df['bird-specie'],
                     index=None,
                     placeholder="Select a bird.",
                     accept_new_options=True,
                 )
                 #with st.spinner("Prediction in progress..."):
+                # écrire les noms + specie : {df['Name']} - {df['Species']}
                 if spe_bird_sel is not None:
 
                         subcol1, subcol2 = st.columns(2)
