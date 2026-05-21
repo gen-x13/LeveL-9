@@ -238,7 +238,7 @@ if selected == "BirdSong":
                                         return None
                                 
                                 # Affichage
-                                image_url = get_bird_image(spe_bird_sel)
+                                image_url = get_bird_image(df[spe_bird_sel]["Name"])
                                 
                                 if image_url:
                                         st.image(image_url, width=300)
