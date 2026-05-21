@@ -27,6 +27,9 @@ from birds_sound_model import BirdModel
 # Paths
 from pathlib import Path
 
+import requests
+from urllib.parse import quote
+
 # Path to the dataset example "bird sound"
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
 
@@ -77,7 +80,6 @@ if "show_dashboard" not in st.session_state:
 #@st.cache_data(show_spinner="Loading bird's sound data...")
 def load_data():
     return pd.read_csv(data_path)
-
 data = load_data()                                              
 
 # ---------------------------------- Model ---------------------------------- #
@@ -88,11 +90,40 @@ data = load_data()
 def cluster_birdsong(data, clusters):
     birdsong = BirdModel(data, clusters)
     return birdsong.run()
-
+        
+@st.cache_data
 def display_prediction(data, num_cluster):
-
         df, pca_data = cluster_birdsong(data, num_cluster)
         return df, pca_data
+
+@st.cache_data
+def get_bird_image(name):
+
+    languages = ["fr", "en"]
+
+    for lang in languages:
+
+        # Encodage URL propre
+        encoded_name = quote(name)
+
+        url = f"https://{lang}.wikipedia.org/api/rest_v1/page/summary/{encoded_name}"
+
+        try:
+            response = requests.get(url)
+
+            if response.status_code == 200:
+
+                data = response.json()
+
+                image_url = data.get("thumbnail", {}).get("source")
+
+                if image_url:
+                    return image_url
+
+        except Exception:
+            pass
+
+    return None
 
 
 # --------------------------------- BirdSong -------------------------------- #
@@ -224,20 +255,6 @@ if selected == "BirdSong":
 
                                 selected_row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
                                 bird_name = selected_row["Name"]
-
-                                
-                                # Request pic in wikipedia
-                                def get_bird_image(name):
-                                    url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{name}"
-                                
-                                    try:
-                                        response = requests.get(url)
-                                        data = response.json()
-                                
-                                        return data.get("thumbnail", {}).get("source")
-                                
-                                    except:
-                                        return None
                                 
                                 # Display
                                 image_url = get_bird_image(bird_name)
