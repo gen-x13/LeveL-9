@@ -204,7 +204,7 @@ if selected == "BirdSong":
                 #with st.spinner("Prediction in progress..."):
                 if spe_bird_sel is not None:
 
-                        subcol1, subcol2 = st.columns([3, 1])
+                        subcol1, subcol2 = st.columns(2)
         
                         with subcol1:
                                 print("Hey")
