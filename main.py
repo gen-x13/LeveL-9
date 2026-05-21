@@ -261,7 +261,7 @@ if selected == "BirdSong":
                                 image_url = get_bird_image(bird_name)
                                 
                                 if image_url:
-                                        st.image(image_url, width=300, height=300)
+                                        st.image(image_url, width=300)
                                         # Take only one audio from the random index
                                         row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
                                         # Audio Path
