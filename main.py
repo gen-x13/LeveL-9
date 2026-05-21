@@ -97,37 +97,34 @@ def display_prediction(data, num_cluster):
         return df, pca_data
 
 @st.cache_data
-def get_bird_image(name):
+def get_species_image(species_name):
 
-    languages = ["fr", "en"]
+    url = "https://api.inaturalist.org/v1/taxa"
 
-    for lang in languages:
+    params = {
+        "q": species_name,
+        "limit": 1
+    }
 
-        # Encodage URL propre
-        url = "https://api.inaturalist.org/v1/taxa"
+    try:
+        response = requests.get(url, params=params)
+        data = response.json()
 
-        params = {
-                "q": species_name,
-                "limit": 1
-            }
-        
-        try:
-                response = requests.get(url, params=params)
-                data = response.json()
-        
-                results = data.get("results")
-        
-                if results:
-        
-                    photo = results[0].get("default_photo")
-        
-                    if photo:
-                        return photo.get("medium_url")
-        
-        except Exception:
-                pass
-        
-        return None
+        results = data.get("results")
+
+        if results:
+
+            photo = results[0].get("default_photo")
+
+            if photo:
+                return photo.get("medium_url")
+
+    except Exception:
+        pass
+
+    return None
+
+       
 
 
 # --------------------------------- BirdSong -------------------------------- #
