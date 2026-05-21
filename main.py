@@ -223,10 +223,10 @@ if selected == "BirdSong":
                                 import requests
 
                                 selected_row = df[df["bird-specie"] == spe_bird_sel].iloc[0]
-                                bird_name = selected_row["Species"]
+                                bird_name = selected_row["Name"]
 
                                 
-                                # Fonction pour récupérer image Wikipedia
+                                # Request pic in wikipedia
                                 def get_bird_image(name):
                                     url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{name}"
                                 
@@ -239,7 +239,7 @@ if selected == "BirdSong":
                                     except:
                                         return None
                                 
-                                # Affichage
+                                # Display
                                 image_url = get_bird_image(bird_name)
                                 
                                 if image_url:
