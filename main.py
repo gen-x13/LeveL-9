@@ -78,7 +78,7 @@ if "show_dashboard" not in st.session_state:
 def load_data():
     return pd.read_csv(data_path)
 
-data = load_data()
+data = load_data()                                              
 
 # ---------------------------------- Model ---------------------------------- #
 
@@ -88,6 +88,11 @@ data = load_data()
 def cluster_birdsong(data, clusters):
     birdsong = BirdModel(data, clusters)
     return birdsong.run()
+
+def display_prediction():
+
+        df, pca_data = cluster_birdsong(data, num_cluster)
+        return df, pca_data
 
 
 # --------------------------------- BirdSong -------------------------------- #
@@ -119,26 +124,22 @@ if selected == "BirdSong":
                 num_cluster = st.slider("Number of clusters?", 3, 10, 3)
                 if num_cluster is not None:
                     with st.spinner("Prediction in progress..."):
-                        df, pca_data = cluster_birdsong(data, num_cluster)
-                
+                        df, pca_data = display_prediction()
                         # Creating a dataframe from the components for plotly 3D
                         # visualization
                         df_plot = pd.DataFrame({
-                                                # Components (array)
-                                                'PC1':pca_data[:,0],
-                                                'PC2':pca_data[:,1],
-                                                'PC3':pca_data[:,2],
-                                                # Informations
-                                                'Names':df['Name'],
-                                                'Species':df['Species'],
-                                                # Paths Audio Files 
-                                                'Audios':df["Audio"],
-                                                # Cluster Labels
-                                                'Clusters':df['Clusters'],
-                
-                
-                                                })
-                
+                                  # Components (array)
+                                  'PC1':pca_data[:,0],
+                                  'PC2':pca_data[:,1],
+                                  'PC3':pca_data[:,2],
+                                  # Informations
+                                  'Names':df['Name'],
+                                  'Species':df['Species'],
+                                  # Paths Audio Files 
+                                  'Audios':df["Audio"],
+                                  # Cluster Labels
+                                  'Clusters':df['Clusters'],
+                                  })
                     # 3D Scatter Plot of the results
                     fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
                                         color="Clusters", 
@@ -191,6 +192,7 @@ if selected == "BirdSong":
                     st.warning("Please, make a selection.") 
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
+                df, pca_data = display_prediction()
                 st.write("It works")
                 spe_bird_sel = st.selectbox(
                     "Select a bird",
@@ -199,7 +201,7 @@ if selected == "BirdSong":
                     placeholder="Select a bird.",
                     accept_new_options=True,
                 )
-
+                #with st.spinner("Prediction in progress..."):
                 if spe_bird_sel is not None:
 
                         subcol1, subcol2 = st.columns([3, 1])
