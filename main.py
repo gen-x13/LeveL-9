@@ -238,17 +238,15 @@ if selected == "BirdSong":
                                         return None
                                 
                                 # Affichage
-                                for _, row in df2.iterrows():
+                                image_url = get_bird_image(spe_bird_sel)
                                 
-                                    image_url = get_bird_image(spe_bird_sel)
-                                
-                                    st.subheader(row["Name"])
-                                
-                                    if image_url:
+                                if image_url:
                                         st.image(image_url, width=300)
                                 
-                                    else:
+                                else:
                                         st.write("Image non trouvée")
+                                
+                                    
 
                 else:
                         st.warning("Select a bird")
