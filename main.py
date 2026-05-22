@@ -255,7 +255,7 @@ if selected == "BirdSong":
                                 import requests
 
                                 selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
-                                bird_name = selected_row["Name"]
+                                bird_name = selected_row["Species"]
                                 
                                 # Display
                                 image_url = get_bird_image(bird_name)
