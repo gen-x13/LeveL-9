@@ -295,7 +295,7 @@ if selected == "Wildlife":
                                 st.subheader(f"5 closest tonalities with {spe_bird_sel}")
                                 st.markdown(top5)
 
-                                for x in range len(top5):
+                                for x in len(top5):
                                         sam = sample_similarity[sample_similarity[top5].iloc[x]
                                         st.markdown(sam)
                                 
