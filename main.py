@@ -225,7 +225,7 @@ if selected == "Wildlife":
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
                 # Storing Data
-                df, pca_data = display_prediction(data, 4)
+                df, pca_data = display_prediction(data, 5)
                 # Sorting Values
                 df = df.sort_values(by="Name", ascending=True)
                 # Creating a new column combining name and species
