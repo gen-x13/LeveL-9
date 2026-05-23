@@ -267,24 +267,6 @@ if selected == "Wildlife":
                         selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters'].iloc[0]
                         sample_similarity = df.loc[df["Clusters"] == selected_clu]
                         
-                        
-
-                        dist = []
-                        
-                        for idx, sample in sample_similarity.iterrows() :
-                        
-                            query_data_point = int(spe_bird_sel["Spectral_Centroid"]), int(spe_bird_sel["Amplitude"])
-                            record_from_df_as_list = int(sample["Spectral_Centroid"]), int(sample["Amplitude"])
-                                
-                            d = distance.euclidean(query_data_point, record_from_df_as_list)
-                            dist.append((idx, d))
-                        
-                        # Ascending 
-                        dist_sorted = sorted(dist, key=lambda x: x[1])
-                        # 5 closest
-                        top5 = dist_sorted[:5]
-
-                        st.write(top5)
         
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
@@ -292,7 +274,7 @@ if selected == "Wildlife":
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
                                 st.write(selected_row["Spectral_Centroid"])
                                 st.write(selected_row)
-                                #st.write(sample_similarity)
+                                st.write(sample_similarity)
                                 # for idx, sim in enumerate(spectr_similarity):
                                 
                         with subcol2:
