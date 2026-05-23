@@ -96,6 +96,24 @@ def display_prediction(data, num_cluster):
         df, pca_data = cluster_birdsong(data, num_cluster)
         return df, pca_data
 
+def data_pca(data, pca):
+
+        df = pd.DataFrame({
+                                  # Components (array)
+                                  'PC1':pca_data[:,0],
+                                  'PC2':pca_data[:,1],
+                                  'PC3':pca_data[:,2],
+                                  # Informations
+                                  'Names':df['Name'],
+                                  'Species':df['Species'],
+                                  # Paths Audio Files 
+                                  'Audios':df["Audio"],
+                                  # Cluster Labels
+                                  'Clusters':df['Clusters'],
+                                  })
+        return df
+
+
 @st.cache_data
 def get_bird_image(species_name):
 
@@ -156,22 +174,12 @@ if selected == "Wildlife":
                 num_cluster = st.slider("Number of clusters?", 3, 10, 3)
                 if num_cluster is not None:
                     with st.spinner("Prediction in progress..."):
+                            
                         df, pca_data = display_prediction(data, num_cluster)
                         # Creating a dataframe from the components for plotly 3D
                         # visualization
-                        df_plot = pd.DataFrame({
-                                  # Components (array)
-                                  'PC1':pca_data[:,0],
-                                  'PC2':pca_data[:,1],
-                                  'PC3':pca_data[:,2],
-                                  # Informations
-                                  'Names':df['Name'],
-                                  'Species':df['Species'],
-                                  # Paths Audio Files 
-                                  'Audios':df["Audio"],
-                                  # Cluster Labels
-                                  'Clusters':df['Clusters'],
-                                  })
+                        df_plot = data_pca(df, pca)
+                            
                     # 3D Scatter Plot of the results
                     fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
                                         color="Clusters", 
@@ -243,6 +251,7 @@ if selected == "Wildlife":
                 if spe_bird_sel is not None:
 
                         subcol1, subcol2 = st.columns(2)
+                        selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
         
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
@@ -254,7 +263,6 @@ if selected == "Wildlife":
                                 # Same specie different cluster or picture of the bird or galerie for the specie
                                 import requests
 
-                                selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
                                 bird_name = selected_row["Species"]
                                 
                                 # Display
