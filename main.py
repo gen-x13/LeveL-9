@@ -239,6 +239,9 @@ if selected == "Wildlife":
                 # Creating a new column combining name and species
                 df["animal-specie"] = df["Name"] + " - " + df["Species"]
 
+                # Store pca dataframe version
+                df_pca = data_pca(df, pca_data)
+
                 # Selection of birds
                 spe_bird_sel = st.selectbox(
                     "Select a animal",
