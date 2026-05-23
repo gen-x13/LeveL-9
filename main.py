@@ -276,21 +276,13 @@ if selected == "Wildlife":
                                 
                             d = distance.euclidean(query_data_point, record_from_df_as_list)
                             dist.append((idx, d))
-                        
-                        # Ascending 
-                        dist_sorted = sorted(dist, key=lambda x: x[1])
-                        df["dist_sorted"] = dist_sorted
-                        # 5 closest
-                        top5 = df["dist_sorted"].iloc[:5]
-                        #top5_mask = [df.loc[df["animal-specie"] == x, 'dist_sorted'].iloc[0] for x in top5]
-                        top5 = df.set_index("animal-specie")["dist_sorted"].loc[top5].tolist()
-
-                        # convert to DataFrame first
+                                
+                        # Convert to dataframe
                         dist_df = pd.DataFrame(dist_sorted, columns=["dist"])
-                        # attach distances ONLY to cluster subset
+                        # Cluster subset to attach distances
                         sample_similarity = sample_similarity.copy()
                         sample_similarity["dist"] = dist_df["dist"]
-                        # get top 5 closest
+                        # 5 closest points
                         top5 = sample_similarity.nsmallest(5, "dist")
                 
                         with subcol1:
