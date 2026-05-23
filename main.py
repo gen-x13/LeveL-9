@@ -296,7 +296,7 @@ if selected == "Wildlife":
                                 st.markdown(top5)
 
                                 for x in len(top5):
-                                        sam = sample_similarity[sample_similarity[top5].iloc[x]
+                                        sam = sample_similarity[sample_similarity[top5].iloc[x]]
                                         st.markdown(sam)
                                 
                                 
