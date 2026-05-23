@@ -293,8 +293,6 @@ if selected == "Wildlife":
                                 #st.write(selected_row)
                                 #st.write(sample_similarity)
                                 st.subheader(f"5 closest tonalities with {spe_bird_sel}")
-                                st.markdown(top5)
-
                                 for _, row in top5.iterrows():
                                         st.markdown(
                                                 f"**Name:** {row['Name']}  \n"
