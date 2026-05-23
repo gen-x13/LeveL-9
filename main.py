@@ -284,8 +284,6 @@ if selected == "Wildlife":
                         sample_similarity["dist"] = dist_df["dist"]
                         # 5 closest points
                         top5 = sample_similarity.nsmallest(5, "dist")
-
-                        
                 
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
@@ -296,6 +294,10 @@ if selected == "Wildlife":
                                 st.write(sample_similarity)
                                 st.subheader(f"5 closest tonalities with {spe_bird_sel}")
                                 st.markdown(top5)
+
+                                for x in range len(top5):
+                                        sam = sample_similarity[sample_similarity[top5].iloc[x]
+                                        st.markdown(sam)
                                 
                                 
                         with subcol2:
