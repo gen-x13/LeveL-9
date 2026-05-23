@@ -242,7 +242,7 @@ if selected == "Wildlife":
                 # Sorting Values PCA
                 df_pca = df_pca.sort_values(by="Names", ascending=True)
                 # Creating a new column combining name and species
-                df["animal-specie"] = df["Names"] + " - " + df["Species"]
+                df["animal-specie"] = df["Name"] + " - " + df["Species"]
                 # Selection of birds
                 spe_bird_sel = st.selectbox(
                     "Select a animal",
