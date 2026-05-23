@@ -254,10 +254,16 @@ if selected == "Wildlife":
                 #with st.spinner("Prediction in progress..."):
                 if spe_bird_sel is not None:
 
+                        # Boxes
                         subcol1, subcol2 = st.columns(2)
+                        # Row for Audio and Pictures
                         selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
+                        # Row for Cluster and Similarities
                         selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters'].iloc[0]
-                        # depuis cette row, trouve son cluster puis sample 5 points max (proches de ce point)
+                        sample_similarity = df.loc[df["Clusters"] == selected_clu]
+                        
+                        # depuis cette row, trouve son cluster puis sample 5 points (proches de ce point)
+                        # 
                         
         
                         with subcol1:
@@ -265,6 +271,7 @@ if selected == "Wildlife":
                                 # 5 samples with strong similarities (close points inside the same cluster)
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
                                 st.write(selected_clu)
+                                st.write(sample_similarity)
                                 
                         with subcol2:
                                 st.caption("🏗 It's still under construction, come back in a few days")
