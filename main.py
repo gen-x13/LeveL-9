@@ -47,7 +47,7 @@ st.set_page_config(page_title="Clustering Sound And More...",
 # Horizontal menu
 selected=option_menu(
         menu_title="Menu",
-        options = ["BirdSong", "Music"], 
+        options = ["Wildlife", "Music"], 
         icons = ["music-note-list", "soundwave"],
         menu_icon="cast",
         default_index=0,
@@ -132,7 +132,7 @@ def get_bird_image(species_name):
 
 # BirdSong Model Page Selection :  
 
-if selected == "BirdSong": 
+if selected == "Wildlife": 
     
     st.title("Xeno Canto Wildlife Song Clustering")
     st.caption("⚠️ WIP ⚠️")
