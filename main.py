@@ -291,7 +291,7 @@ if selected == "Wildlife":
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
                                 #st.write(selected_row["Spectral_Centroid"])
                                 #st.write(selected_row)
-                                st.write(sample_similarity)
+                                #st.write(sample_similarity)
                                 st.subheader(f"5 closest tonalities with {spe_bird_sel}")
                                 st.markdown(top5)
 
