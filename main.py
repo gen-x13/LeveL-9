@@ -284,6 +284,14 @@ if selected == "Wildlife":
                         top5 = df["dist_sorted"].iloc[:5]
                         #top5_mask = [df.loc[df["animal-specie"] == x, 'dist_sorted'].iloc[0] for x in top5]
                         top5 = df.set_index("animal-specie")["dist_sorted"].loc[top5].tolist()
+
+                        # convert to DataFrame first
+                        dist_df = pd.DataFrame(dist_sorted, columns=["dist"])
+                        # attach distances ONLY to cluster subset
+                        sample_similarity = sample_similarity.copy()
+                        sample_similarity["dist"] = dist_df["dist"]
+                        # get top 5 closest
+                        top5 = sample_similarity.nsmallest(5, "dist")
                 
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
