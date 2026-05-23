@@ -275,7 +275,7 @@ if selected == "Wildlife":
                             record_from_df_as_list = int(sample["Spectral_Centroid"]), int(sample["Amplitude"])
                                 
                             d = distance.euclidean(query_data_point, record_from_df_as_list)
-                            dist.append((idx, d))
+                            dist.append((d))
                                 
                         # Convert to dataframe
                         dist_df = pd.DataFrame(dist, columns=["dist"])
