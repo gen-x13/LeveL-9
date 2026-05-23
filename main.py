@@ -281,6 +281,7 @@ if selected == "Wildlife":
                         dist_sorted = sorted(dist, key=lambda x: x[1])
                         # 5 closest
                         top5 = dist_sorted[:5]
+                        #top5 = [df.loc[df[""] == spe_bird_sel, 'animal-specie'] for x in top5 
 
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
@@ -288,7 +289,7 @@ if selected == "Wildlife":
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
                                 #st.write(selected_row["Spectral_Centroid"])
                                 #st.write(selected_row)
-                                #st.write(sample_similarity)
+                                st.write(sample_similarity)
                                 st.caption(top5)
                                 # for idx, sim in enumerate(spectr_similarity):
                                 
