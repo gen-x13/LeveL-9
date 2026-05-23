@@ -235,10 +235,12 @@ if selected == "Wildlife":
                 
                 # Storing Data
                 df, pca_data = display_prediction(data, 5)
+                # Sorting Values DF
+                df = df.sort_values(by="Names", ascending=True)
                 # Store pca dataframe version
                 df_pca = data_pca(df, pca_data)
-                # Sorting Values
-                df = df_pca.sort_values(by="Names", ascending=True)
+                # Sorting Values PCA
+                df_pca = df_pca.sort_values(by="Names", ascending=True)
                 # Creating a new column combining name and species
                 df["animal-specie"] = df["Names"] + " - " + df["Species"]
                 # Selection of birds
