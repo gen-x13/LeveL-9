@@ -289,7 +289,7 @@ if selected == "Wildlife":
                                 st.write(selected_row["Spectral_Centroid"])
                                 st.write(selected_row)
                                 st.write(sample_similarity)
-                                st.write(top5)
+                                print(top5)
                                 # for idx, sim in enumerate(spectr_similarity):
                                 
                         with subcol2:
