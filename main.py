@@ -260,7 +260,7 @@ if selected == "Wildlife":
                 if spe_bird_sel is not None:
 
                         # Boxes
-                        subcol1, subcol2 = st.columns(2)
+                        subcol1, subcol2 = st.columns([4, 1])
                         # Row for Audio and Pictures
                         selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
                         # Row for Cluster and Similarities
