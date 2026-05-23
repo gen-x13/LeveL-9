@@ -254,13 +254,15 @@ if selected == "Wildlife":
 
                         subcol1, subcol2 = st.columns(2)
                         selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
-                        selected_clu = df[df["Clusters"] == spe_bird_sel].iloc[0]
+                        selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters']
+                        # depuis cette row, trouve son cluster puis sample 5 points max (proches de ce point)
+                        
         
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # 5 samples with strong similarities (close points inside the same cluster)
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
-                                
+                                st.write(selected_clu)
                                 
                         with subcol2:
                                 st.caption("🏗 It's still under construction, come back in a few days")
