@@ -260,7 +260,7 @@ if selected == "Wildlife":
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # 5 samples with strong similarities (close points inside the same cluster)
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
-                                st.write(selected_clu)
+                                
                                 
                         with subcol2:
                                 st.caption("🏗 It's still under construction, come back in a few days")
