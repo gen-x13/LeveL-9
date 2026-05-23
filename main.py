@@ -236,7 +236,7 @@ if selected == "Wildlife":
                 # Storing Data
                 df, pca_data = display_prediction(data, 5)
                 # Sorting Values DF
-                df = df.sort_values(by="Names", ascending=True)
+                df = df.sort_values(by="Name", ascending=True)
                 # Store pca dataframe version
                 df_pca = data_pca(df, pca_data)
                 # Sorting Values PCA
