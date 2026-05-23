@@ -178,7 +178,7 @@ if selected == "Wildlife":
                         df, pca_data = display_prediction(data, num_cluster)
                         # Creating a dataframe from the components for plotly 3D
                         # visualization
-                        df_plot = data_pca(df, pca)
+                        df_plot = data_pca(df, pca_data)
                             
                     # 3D Scatter Plot of the results
                     fig = px.scatter_3d(df_plot, x='PC1', y='PC2', z='PC3',
