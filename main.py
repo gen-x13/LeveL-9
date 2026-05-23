@@ -284,6 +284,8 @@ if selected == "Wildlife":
                         sample_similarity["dist"] = dist_df["dist"]
                         # 5 closest points
                         top5 = sample_similarity.nsmallest(5, "dist")
+
+                        
                 
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
@@ -291,7 +293,7 @@ if selected == "Wildlife":
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
                                 #st.write(selected_row["Spectral_Centroid"])
                                 #st.write(selected_row)
-                                #st.write(sample_similarity)
+                                st.write(sample_similarity)
                                 st.subheader(f"5 closest tonalities with {spe_bird_sel}")
                                 st.markdown(top5)
                                 
