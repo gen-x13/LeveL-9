@@ -96,9 +96,9 @@ def display_prediction(data, num_cluster):
         df, pca_data = cluster_birdsong(data, num_cluster)
         return df, pca_data
 
-def data_pca(data, pca):
+def data_pca(df, pca):
 
-        df = pd.DataFrame({
+        data = pd.DataFrame({
                                   # Components (array)
                                   'PC1':pca_data[:,0],
                                   'PC2':pca_data[:,1],
@@ -111,7 +111,7 @@ def data_pca(data, pca):
                                   # Cluster Labels
                                   'Clusters':df['Clusters'],
                                   })
-        return df
+        return data
 
 
 @st.cache_data
