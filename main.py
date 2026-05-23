@@ -292,6 +292,7 @@ if selected == "Wildlife":
                                 #st.write(selected_row)
                                 #st.write(sample_similarity)
                                 st.subheader(f"5 closest tonalities with {spe_bird_sel}")
+                                st.caption("It's approximative and in progress")
                                 row1 = st.columns(2)
                                 for i, row in top5.iterrows():
                                         with row1[i % 2]:
