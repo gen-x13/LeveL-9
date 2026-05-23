@@ -310,7 +310,7 @@ if selected == "Wildlife":
                                 # Same specie different cluster or picture of the bird or galerie for the specie
                                 import requests
 
-                                bird_name = selected_row["Species"]
+                                bird_name = selected_row["Names"]
                                 
                                 # Display
                                 image_url = get_bird_image(bird_name)
