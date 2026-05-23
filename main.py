@@ -27,8 +27,13 @@ from birds_sound_model import BirdModel
 # Paths
 from pathlib import Path
 
+# Querying pictures
 import requests
+# 
 from urllib.parse import quote
+
+# Spatial distance for points
+from scipy.spatial import distance
 
 # Path to the dataset example "bird sound"
 data_path = Path(__file__).parent / "data" / "bird_sound_data.csv"
@@ -262,9 +267,24 @@ if selected == "Wildlife":
                         selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters'].iloc[0]
                         sample_similarity = df.loc[df["Clusters"] == selected_clu]
                         
-                        # depuis cette row, trouve son cluster puis sample 5 points (proches de ce point)
-                        # 
                         
+
+                        dist = []
+                        
+                        for idx, sample in sample_similarity.iterrows() :
+                        
+                            query_data_point = int(spe_bird_sel["Spectral_Centroid"]), int(spe_bird_sel["Amplitude"])
+                            record_from_df_as_list = int(sample["Spectral_Centroid"]), int(sample["Amplitude"])
+                                
+                            d = distance.euclidean(query_data_point, record_from_df_as_list)
+                            dist.append((idx, d))
+                        
+                        # Ascending 
+                        dist_sorted = sorted(dist, key=lambda x: x[1])
+                        # 5 closest
+                        top5 = dist_sorted[:5]
+
+                        st.write(top5)
         
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
