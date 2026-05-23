@@ -256,7 +256,7 @@ if selected == "Wildlife":
 
                         subcol1, subcol2 = st.columns(2)
                         selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
-                        selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters']
+                        selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters'].iloc[0]
                         # depuis cette row, trouve son cluster puis sample 5 points max (proches de ce point)
                         
         
