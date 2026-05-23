@@ -232,16 +232,15 @@ if selected == "Wildlife":
                     st.warning("Please, make a selection.") 
 
         elif st.session_state.show_dashboard and not st.session_state.show_cluster :
+                
                 # Storing Data
                 df, pca_data = display_prediction(data, 5)
-                # Sorting Values
-                df = df.sort_values(by="Name", ascending=True)
-                # Creating a new column combining name and species
-                df["animal-specie"] = df["Name"] + " - " + df["Species"]
-
                 # Store pca dataframe version
                 df_pca = data_pca(df, pca_data)
-
+                # Sorting Values
+                df = df_pca.sort_values(by="Name", ascending=True)
+                # Creating a new column combining name and species
+                df["animal-specie"] = df["Name"] + " - " + df["Species"]
                 # Selection of birds
                 spe_bird_sel = st.selectbox(
                     "Select a animal",
@@ -255,12 +254,14 @@ if selected == "Wildlife":
 
                         subcol1, subcol2 = st.columns(2)
                         selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
+                        selected_clu = df[df["Clusters"] == spe_bird_sel].iloc[0]
         
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
-                                # 5 samples with strong similarities (points proches)
+                                # 5 samples with strong similarities (close points inside the same cluster)
+                                # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
+                                st.write(selected_clu)
                                 
-
                         with subcol2:
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # Same specie different cluster or picture of the bird or galerie for the specie
