@@ -292,7 +292,8 @@ if selected == "Wildlife":
                                 #st.write(selected_row["Spectral_Centroid"])
                                 #st.write(selected_row)
                                 st.write(sample_similarity)
-                                st.caption(top5)
+                                st.subheader("5 approximatively closest sounds with {spe_bird_sel}")
+                                st.markdown(top5)
                                 # for idx, sim in enumerate(spectr_similarity):
                                 
                         with subcol2:
