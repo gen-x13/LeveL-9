@@ -286,7 +286,6 @@ if selected == "Wildlife":
                         top5 = sample_similarity.nsmallest(5, "dist")
                 
                         with subcol1:
-                                st.caption("🏗 It's still under construction, come back in a few days")
                                 # 5 samples with strong similarities in tonality (close points inside the same cluster)
                                 # search the spe_bird_sel cluster row, then .sample(5) and display their names and species
                                 #st.write(selected_row["Spectral_Centroid"])
@@ -299,6 +298,8 @@ if selected == "Wildlife":
                                                 f"**Species:** {row['Species']}  \n"
                                                 f"**Distance:** {row['dist']:.2f}"
                                             )
+                                        
+                                st.caption("🏗 It's still under construction, come back in a few days")
                                 
                                 
                         with subcol2:
