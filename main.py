@@ -267,7 +267,6 @@ if selected == "Wildlife":
                         selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters'].iloc[0]
                         sample_similarity = df.loc[df["Clusters"] == selected_clu]
 
-                        
                         dist = []
                         
                         for idx, sample in sample_similarity.iterrows() :
@@ -283,9 +282,6 @@ if selected == "Wildlife":
                         # 5 closest
                         top5 = dist_sorted[:5]
 
-                        st.write(top5)
-                        
-        
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # 5 samples with strong similarities in tonality (close points inside the same cluster)
@@ -293,6 +289,7 @@ if selected == "Wildlife":
                                 st.write(selected_row["Spectral_Centroid"])
                                 st.write(selected_row)
                                 st.write(sample_similarity)
+                                st.write(top5)
                                 # for idx, sim in enumerate(spectr_similarity):
                                 
                         with subcol2:
