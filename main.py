@@ -160,7 +160,7 @@ if selected == "Wildlife":
     st.title("Xeno Canto Wildlife Song Clustering")
     st.caption("⚠️ WIP ⚠️")
         
-    st.markdown("<b><p style='color:black;font-size:20px;background:rgba(255,255,255,0.20);border-radius:12px;padding:10px 14px;display:inline;backdrop-filter:blur(6px);'>This app groups animals based on their sounds. Select how many clusters you want to observe within the ~400 audios from Xeno Canto.</p></b>",
+    st.markdown("<b><p style='color:black;font-size:20px;background:rgba(255,255,255,0.20);border-radius:12px;padding:10px 14px;display:inline;backdrop-filter:blur(6px);'>This app groups animals based on their sounds. Select how many clusters you want to observe within the 400 audios from Xeno Canto.</p></b>",
                 unsafe_allow_html=True)
 
     col1, col2 = st.columns([7, 1])
