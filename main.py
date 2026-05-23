@@ -279,10 +279,12 @@ if selected == "Wildlife":
                         
                         # Ascending 
                         dist_sorted = sorted(dist, key=lambda x: x[1])
+                        df["dist_sorted"] = dist_sorted
                         # 5 closest
-                        top5 = dist_sorted[:5]
-                        #top5 = [df.loc[df[""] == spe_bird_sel, 'animal-specie'] for x in top5 
-
+                        top5 = df["dist_sorted"].iloc[:5]
+                        #top5_mask = [df.loc[df["animal-specie"] == x, 'dist_sorted'].iloc[0] for x in top5]
+                        top5 = df.set_index("animal-specie")["dist_sorted"].loc[top5].tolist()
+                
                         with subcol1:
                                 st.caption("🏗 It's still under construction, come back in a few days")
                                 # 5 samples with strong similarities in tonality (close points inside the same cluster)
