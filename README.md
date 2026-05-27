@@ -4,6 +4,7 @@
 
   This project analyzes, and predicts wildlife sounds to classify them and show their similarity based on their audios.
   There's also the "bird_sound.py" file, which show how I made these short samples.
+  
   *Small note : I didn’t specify birdsong clearly enough in the request, so I ended up getting general wildlife sounds instead. 
   But honestly, that works out well since I wanted to make things more challenging anyway.*
 
