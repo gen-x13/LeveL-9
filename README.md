@@ -4,7 +4,6 @@
 
   This project analyzes, and predicts wildlife sounds to classify them and show their similarity based on their audios.
   There's also the "bird_sound.py" file, which show how I made these short samples.
-  
   *Small note : I didn’t specify birdsong clearly enough in the request, so I ended up getting general wildlife sounds instead. 
   But honestly, that works out well since I wanted to make things more challenging anyway.*
 
@@ -38,7 +37,7 @@
   There is only version available:
   - 🇬🇧 **English version**: Includes English commentary (`-en`).
 
-  - **Tech Stack:** Python, Pandas, Streamlit, Scikit-learn, Librosa, Requests.
+  - **Tech Stack:** Python, Pandas, Streamlit, Scipy, Scikit-learn, Librosa, RandomizedSearchCV, Requests.
 
 
 ---
@@ -64,7 +63,7 @@
 ### **Requirements**  
 Before running the project, make sure you have the following libraries installed:  
 ```bash
-pip install pandas streamlit plotly scikit-learn librosa pathlib plotly requests
+pip install pandas streamlit plotly scikit-learn scipy librosa pathlib plotly requests randomizedsearchcv
 
 ```
 ---
