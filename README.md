@@ -17,7 +17,7 @@
 
     - Requesting data (Requests, Xeno Canto's API),
     - Fetching pictures data (Requests, INaturalist's API),
-    - Feature Engineering (Librosa : cleaning, sampling and extracting infos from sounds; 
+    - Feature Engineering (Librosa : cleaning, sampling and extracting audio features (MFCCs, spectral features, etc),
       Pandas : creating dataset for the model),
     - Unsupervised learning algorithm (K-Means, silhouette metric), 
     - Dimension reduction (PCA),
