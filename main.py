@@ -279,6 +279,8 @@ if selected == "Wildlife":
                                 
                         # Convert to dataframe
                         dist_df = pd.DataFrame(dist, columns=["dist"])
+
+                        st.dataframe(dist_df)
                         # Cluster subset to attach distances
                         sample_similarity = sample_similarity.copy()
                         sample_similarity["dist"] = dist_df["dist"]
