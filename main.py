@@ -269,7 +269,7 @@ if selected == "Wildlife":
 
                         dist = []
                         # Euclidian Distance for each rows
-                        for idx, sample in sample_similarity.iterrows() :
+                        for idx, sample in selected_clu.iterrows() :
                         
                             query_data_point = selected_row["Spectral_Centroid"], selected_row["Amplitude"]
                             record_from_df_as_list = sample["Spectral_Centroid"], sample["Amplitude"]
