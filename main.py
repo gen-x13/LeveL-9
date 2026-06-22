@@ -293,9 +293,9 @@ if selected == "Wildlife":
                                 #st.write(sample_similarity)
                                 st.subheader(f"6 closest tonalities with {spe_bird_sel}")
                                 st.caption("It's approximative and in progress")
-                                row1 = st.columns(3)
+                                row1 = st.columns(2)
                                 for i, row in top6.iterrows():
-                                        with row1[i % 3]:
+                                        with row1[i % 2]:
                                                 
                                                 st.markdown(
                                                         f"**Name:** {row['Name']}  \n"
