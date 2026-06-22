@@ -264,12 +264,12 @@ if selected == "Wildlife":
                         # Row for Audio and Pictures
                         selected_row = df[df["animal-specie"] == spe_bird_sel].iloc[0]
                         # Row for Cluster and Similarities
-                        selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters']#.iloc[0]
-                        #sample_similarity = df.loc[df["Clusters"] == selected_clu]
+                        selected_clu = df.loc[df["animal-specie"] == spe_bird_sel, 'Clusters'].iloc[0]
+                        sample_similarity = df.loc[df["Clusters"] == selected_clu]
 
                         dist = []
                         # Euclidian Distance for each rows
-                        for idx, sample in selected_clu.iterrows() : #sample_similarity
+                        for idx, sample in sample_similarity.iterrows() :
                         
                             query_data_point = selected_row["Spectral_Centroid"], selected_row["Amplitude"]
                             record_from_df_as_list = sample["Spectral_Centroid"], sample["Amplitude"]
@@ -280,7 +280,7 @@ if selected == "Wildlife":
                         # Convert to dataframe
                         dist_df = pd.DataFrame(dist, columns=["dist"])
                         # Cluster subset to attach distances
-                        sample_similarity = selected_clu.copy() #sample_similarity.copy()
+                        sample_similarity = sample_similarity.copy() #sample_similarity.copy()
                         sample_similarity["dist"] = dist_df["dist"]
                         # 5 closest points
                         top6 = sample_similarity.nsmallest(6, "dist")
