@@ -268,7 +268,7 @@ if selected == "Wildlife":
                         sample_similarity = df.loc[df["Clusters"] == selected_clu]
 
                         dist = []
-                        
+                        # Euclidian Distance for each rows
                         for idx, sample in sample_similarity.iterrows() :
                         
                             query_data_point = selected_row["Spectral_Centroid"], selected_row["Amplitude"]
@@ -327,7 +327,7 @@ if selected == "Wildlife":
                                         st.audio(audio_path, format="audio/mpeg", loop=True)
                                 
                                 else:
-                                        st.write("Image non trouvée")
+                                        st.write("No found Picture")
 
 
                 else:
