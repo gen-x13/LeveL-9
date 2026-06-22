@@ -300,7 +300,8 @@ if selected == "Wildlife":
                                                 st.markdown(
                                                         f"**Name:** {row['Name']}  \n"
                                                         f"**Species:** {row['Species']}  \n"
-                                                        f"**Distance:** {row['dist']:.2f}"
+                                                        f"**Distance:** {row['dist']:.2f} \n"
+                                                        f"**Cluster:** {row['Clusters']}"
                                                          )
                                                         
                                 st.caption("🏗 It's still under construction, come back in a few days")
