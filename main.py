@@ -283,7 +283,7 @@ if selected == "Wildlife":
                         sample_similarity = sample_similarity.copy()
                         sample_similarity["dist"] = dist_df["dist"]
                         # 5 closest points
-                        top5 = sample_similarity.nsmallest(6, "dist")
+                        top6 = sample_similarity.nsmallest(6, "dist")
                         st.dataframe(sample_similarity)
                         with subcol1:
                                 # 5 samples with strong similarities in tonality (close points inside the same cluster)
@@ -291,11 +291,11 @@ if selected == "Wildlife":
                                 #st.write(selected_row["Spectral_Centroid"])
                                 #st.write(selected_row)
                                 #st.write(sample_similarity)
-                                st.subheader(f"5 closest tonalities with {spe_bird_sel}")
+                                st.subheader(f"6 closest tonalities with {spe_bird_sel}")
                                 st.caption("It's approximative and in progress")
-                                row1 = st.columns(2)
-                                for i, row in top5.iterrows():
-                                        with row1[i % 2]:
+                                row1 = st.columns(3)
+                                for i, row in top6.iterrows():
+                                        with row1[i % 3]:
                                                 
                                                 st.markdown(
                                                         f"**Name:** {row['Name']}  \n"
