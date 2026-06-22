@@ -283,7 +283,7 @@ if selected == "Wildlife":
                         sample_similarity = sample_similarity.copy()
                         sample_similarity["dist"] = dist_df["dist"]
                         # 5 closest points
-                        top5 = sample_similarity.nsmallest(5, "dist")
+                        top5 = sample_similarity.nsmallest(6, "dist")
                         st.dataframe(sample_similarity)
                         with subcol1:
                                 # 5 samples with strong similarities in tonality (close points inside the same cluster)
@@ -301,7 +301,7 @@ if selected == "Wildlife":
                                                         f"**Name:** {row['Name']}  \n"
                                                         f"**Species:** {row['Species']}  \n"
                                                         f"**Distance:** {row['dist']:.2f} \n"
-                                                        f"**Cluster:** {row['Clusters']}"
+                                                        f"**Cluster:** {row['Clusters']} \n"
                                                          )
                                                         
                                 st.caption("🏗 It's still under construction, come back in a few days")
